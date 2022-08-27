@@ -1,0 +1,12 @@
+.hide {
+    display: none;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+#hiddenWordTarget {
+    width: 100%;
+    display: block;
+}
