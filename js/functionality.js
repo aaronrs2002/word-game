@@ -54,9 +54,11 @@ function startGame() {
 startGame();
 
 function showNum() {
+    console.log("populate solved " + wordPrep);
     cheated = true;
     document.querySelector(".list-group-item span").classList.remove("hide");
     document.querySelector(".list-group-item .btn").classList.add("hide");
+    document.querySelector("input[name='solveWord']").value = wordPrep;
 }
 
 function verify() {
@@ -68,7 +70,6 @@ function verify() {
     for (let i = 0; i < wordPrep.length; i++) {
         console.log("userGuess.toLowerCase(): " + userGuess.toLowerCase() + " - wordPrep[i]: " + wordPrep[i]);
         if (userGuess.toLowerCase() === wordPrep[i].toLowerCase()) {
-            // statusList = statusList + userGuess;
             letterSolved[i] = userGuess.toLowerCase();
         }
 
@@ -84,18 +85,21 @@ function verify() {
             failedRequests.push(userGuess.toLowerCase());
             requestFailedHTML = requestFailedHTML + userGuess.toLowerCase() + " ";
         }
-        console.log("pushed to failedRequests length: " + failedRequests + " failedRequests.indexOf(userGuess.toLowerCase()): " + failedRequests.indexOf(userGuess.toLowerCase()));
 
-
+        window.location = "#";
 
     }
 
 
 
-    console.log("requestFailedHTML: " + requestFailedHTML);
+
     document.getElementById("hiddenWordTarget").innerHTML = statusList;
     document.querySelector("[name='userGuess']").value = "";
     document.querySelector("#requestedList").innerHTML = requestFailedHTML;
+
+    if (letterSolved.indexOf(" ~ ") === -1) {
+        document.querySelector("input[name='solveWord']").value = wordPrep;
+    }
 
 }
 
@@ -139,6 +143,7 @@ function solve() {
         failedRequests = [];
 
         document.getElementById("requestedList").innerHTML = "Guess the word";
+        //document.querySelector("input[name='solveWord']").value = "";
 
 
         requestFailedHTML = "";
