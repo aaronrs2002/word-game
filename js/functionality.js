@@ -54,7 +54,7 @@ function startGame() {
 startGame();
 
 function showNum() {
-    console.log("populate solved " + wordPrep);
+
     cheated = true;
     document.querySelector(".list-group-item span").classList.remove("hide");
     document.querySelector(".list-group-item .btn").classList.add("hide");
@@ -63,35 +63,22 @@ function showNum() {
 
 function verify() {
     let statusList = "";
-
     const userGuess = document.querySelector("[name='userGuess']").value;
-
-
     for (let i = 0; i < wordPrep.length; i++) {
-        console.log("userGuess.toLowerCase(): " + userGuess.toLowerCase() + " - wordPrep[i]: " + wordPrep[i]);
         if (userGuess.toLowerCase() === wordPrep[i].toLowerCase()) {
             letterSolved[i] = userGuess.toLowerCase();
         }
-
-
-
     }
 
     for (let i = 0; i < letterSolved.length; i++) {
         statusList = statusList + letterSolved[i];
 
-
         if (failedRequests.indexOf(userGuess.toLowerCase()) === -1 && letterSolved.indexOf(userGuess.toLowerCase()) === -1) {
             failedRequests.push(userGuess.toLowerCase());
             requestFailedHTML = requestFailedHTML + userGuess.toLowerCase() + " ";
         }
-
         window.location = "#";
-
     }
-
-
-
 
     document.getElementById("hiddenWordTarget").innerHTML = statusList;
     document.querySelector("[name='userGuess']").value = "";
@@ -100,21 +87,16 @@ function verify() {
     if (letterSolved.indexOf(" ~ ") === -1) {
         document.querySelector("input[name='solveWord']").value = wordPrep;
     }
-
 }
 
 function solve() {
     let percentage = 100;
     for (let i = 0; i < failedRequests.length; i++) {
-        percentage = percentage - 5;
+        percentage = percentage - 10;
     }
 
     document.querySelector("#winLoseStatus[role='alert']").classList.remove("hide");
     if (document.querySelector("input[name='solveWord']").value.toLowerCase() === wordPrep.toLowerCase()) {
-
-        for (let i = 0; i < requestedList.length; i++) {
-            percentage = percentage - 5;
-        }
 
         document.querySelector("#winLoseStatus[role='alert']").classList.add("alert-success");
         if (cheated === false) {
@@ -141,14 +123,9 @@ function solve() {
         document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-success");
         document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-danger");
         failedRequests = [];
-
         document.getElementById("requestedList").innerHTML = "Guess the word";
-        //document.querySelector("input[name='solveWord']").value = "";
-
-
         requestFailedHTML = "";
         cheated = false;
-
         startGame();
     }, 3000);
 }
