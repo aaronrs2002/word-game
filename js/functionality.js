@@ -44,9 +44,6 @@ function startGame() {
         + "</b></u></span> " + definitionPrep + "<div id='hiddenWordTarget'><h3>" + wordSolution
         + "</h3></div><input type='text' name='userGuess' class='form-control' maxlength='1' placeholder='Is there a...' /><div class='d-grid gap-2'><button class='btn btn-block btn-primary py-2' onClick='javascript:verify()'>Request Letter</button>" +
         "<input type='text' name='solveWord' class='form-control'  placeholder='Solve word' /><button  class='btn btn-block btn-success py-2' onClick='javascript:solve()'>Solve</button></div></li>";
-
-
-
     document.querySelector("#listTarget").innerHTML = gameHTML;
 }
 
@@ -103,7 +100,7 @@ function solve() {
             document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>! YOU DID IT! +$" + percentage + "</h3>";
             setPlayerMoney((playerMoney + percentage));
         } else {
-            document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span> YOU CHEATED. NO WINNINGS.</h3>";
+            document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>. YOU CHEATED. NO WINNINGS.</h3>";
         }
 
 
@@ -130,4 +127,20 @@ function solve() {
     }, 3000);
 }
 
+function chooseDictionary(option) {
+    if (option == 1) {
+        document.getElementById("wordsVar").setAttribute('src', "data/dictionary.js");
+        document.querySelector("[data-word='1']").classList.add("active");
+        document.querySelector("[data-word='2']").classList.remove("active");
+        localStorage.setItem("dictionary", "1");
+    } else {
+        document.getElementById("wordsVar").setAttribute('src', "data/dictionary2.js");
+        document.querySelector("[data-word='2']").classList.add("active");
+        document.querySelector("[data-word='1']").classList.remove("active");
+        localStorage.setItem("dictionary", "2");
+    }
+}
 
+if (localStorage.getItem("dictionary")) {
+    chooseDictionary(localStorage.getItem("dictionary"));
+}
