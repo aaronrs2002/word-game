@@ -55,12 +55,18 @@
                     <div class="card-body">
                         <ul id="listTarget" class="list-group list-group-flush"></ul>
                     </div>
+
                 </div>
                 <div class="alert hide" id="winLoseStatus" role="alert"></div>
 
             </div>
         </div>
-
+        <div class="btn-group" role="group" id="dictionaryOptions">
+            <button type="button" class="btn btn-primary active" data-word="2"
+                onClick="javascript:chooseDictionary(2)">Easier</button>
+            <button type="button" class="btn btn-primary" data-word="1"
+                onClick="javascript:chooseDictionary(1)">Harder</button>
+        </div>
     </div>
 
 
@@ -82,7 +88,7 @@
 
 </body>
 <script src="https://aaronrs2002.github.io/black-jack/js/footer.js"></script>
-<script src="data/dictionary.js"></script>
+<script id="wordsVar" src="data/dictionary2.js"></script>
 <script src="js/functionality.js"></script>
 
 </html>
