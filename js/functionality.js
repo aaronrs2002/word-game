@@ -133,11 +133,25 @@ function chooseDictionary(option) {
         document.querySelector("[data-word='1']").classList.add("active");
         document.querySelector("[data-word='2']").classList.remove("active");
         localStorage.setItem("dictionary", "1");
-    } else {
+    }
+    if (option == 2) {
         document.getElementById("wordsVar").setAttribute('src', "data/dictionary2.js");
         document.querySelector("[data-word='2']").classList.add("active");
         document.querySelector("[data-word='1']").classList.remove("active");
         localStorage.setItem("dictionary", "2");
+    }
+
+    if (option == 3) {
+        let balance = 500;
+        let setTheme = "united";
+        if (localStorage.getItem("theme")) {
+            setTheme = localStorage.getItem("theme");
+        }
+        if (localStorage.getItem("balance")) {
+            balance = localStorage.getItem("balance");
+        }
+        window.location.href = "https://aaronrs2002.github.io/build-your-own-word-trivia/?theme=" + setTheme + "&balance=" + balance + "&";
+
     }
 }
 
