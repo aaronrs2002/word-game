@@ -28,8 +28,8 @@ function startGame() {
 
     randomNum = Math.floor(Math.random() * words.length);
     wordDef = JSON.stringify(words[randomNum]).split(":");
-    wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).replace(" ", "-");
-    definitionPrep = wordDef[1].substring(1, wordDef[1].length - 2)
+    wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).trim().replaceAll(" ", "-").replaceAll("'", "");
+    definitionPrep = wordDef[1].substring(1, wordDef[1].length - 2).replaceAll("'", "");
 
     for (let i = 0; i < wordPrep.length; i++) {/*remeber to check for spaces*/
         let addThis = " ~ ";
