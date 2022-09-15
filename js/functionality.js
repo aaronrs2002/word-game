@@ -79,7 +79,13 @@ function verify() {
 
     document.getElementById("hiddenWordTarget").innerHTML = statusList;
     document.querySelector("[name='userGuess']").value = "";
-    document.querySelector("#requestedList").innerHTML = requestFailedHTML;
+
+    if (requestFailedHTML.length === 0) {
+        document.querySelector("#requestedList").innerHTML = "So far, so good.";
+    } else {
+        document.querySelector("#requestedList").innerHTML = "$" + (100 - (10 * failedRequests.length)) + " possible:<br/>" + requestFailedHTML;
+    }
+
 
     if (letterSolved.indexOf(" ~ ") === -1) {
         document.querySelector("input[name='solveWord']").value = wordPrep;
