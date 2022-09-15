@@ -26,6 +26,7 @@ function setPlayerMoney(passPlayerMoney) {
 
 function startGame() {
 
+
     randomNum = Math.floor(Math.random() * words.length);
     wordDef = JSON.stringify(words[randomNum]).split(":");
     wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).trim().replaceAll(" ", "-").replaceAll("'", "");
@@ -89,6 +90,7 @@ function verify() {
 
     if (letterSolved.indexOf(" ~ ") === -1) {
         document.querySelector("input[name='solveWord']").value = wordPrep;
+        document.querySelector("#hiddenWordTarget").classList.add("text-success");
     }
 }
 
