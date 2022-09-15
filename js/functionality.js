@@ -93,7 +93,7 @@ function solve() {
     }
 
     document.querySelector("#winLoseStatus[role='alert']").classList.remove("hide");
-    if (document.querySelector("input[name='solveWord']").value.toLowerCase() === wordPrep.toLowerCase()) {
+    if (document.querySelector("input[name='solveWord']").value.toLowerCase().replaceAll(" ", "-") === wordPrep.toLowerCase().replaceAll(" ", "-")) {
 
         document.querySelector("#winLoseStatus[role='alert']").classList.add("alert-success");
         if (cheated === false) {
