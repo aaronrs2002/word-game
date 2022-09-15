@@ -83,7 +83,7 @@ function verify() {
     if (requestFailedHTML.length === 0) {
         document.querySelector("#requestedList").innerHTML = "So far, so good.";
     } else {
-        document.querySelector("#requestedList").innerHTML = "$" + (100 - (10 * failedRequests.length)) + " possible:<br/>" + requestFailedHTML;
+        document.querySelector("#requestedList").innerHTML = "<span class='mobileBlock'>$" + (100 - (10 * failedRequests.length)) + " possible: </span>" + requestFailedHTML;
     }
 
 
