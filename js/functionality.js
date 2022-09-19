@@ -57,6 +57,8 @@ function showNum() {
     document.querySelector(".list-group-item span").classList.remove("hide");
     document.querySelector(".list-group-item .btn").classList.add("hide");
     document.querySelector("input[name='solveWord']").value = wordPrep;
+    document.getElementById("solveWordBt").focus();
+    document.querySelector("[name='userGuess']").disabled = true;
 }
 
 function verify() {
@@ -92,6 +94,7 @@ function verify() {
         document.querySelector("input[name='solveWord']").value = wordPrep;
         document.querySelector("#hiddenWordTarget").classList.add("text-success");
         document.getElementById("solveWordBt").focus();
+        document.querySelector("[name='userGuess']").disabled = true;
     }
 }
 
