@@ -26,8 +26,14 @@ function setPlayerMoney(passPlayerMoney) {
 
 function startGame() {
 
+    if (localStorage.getItem("wordIndex")) {
+        randomNum = Number(localStorage.getItem("wordIndex"));
+    } else {
+        randomNum = Math.floor(Math.random() * words.length);
+        localStorage.setItem("wordIndex", randomNum);
+    }
 
-    randomNum = Math.floor(Math.random() * words.length);
+
     wordDef = JSON.stringify(words[randomNum]).split(":");
     wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).trim().replaceAll(" ", "-").replaceAll("'", "");
     definitionPrep = wordDef[1].substring(1, wordDef[1].length - 2).replaceAll("'", "");
@@ -126,6 +132,7 @@ function solve() {
     }
 
     setTimeout(() => {
+        localStorage.removeItem("wordIndex");
         gameHTML = "";
         wordSolution = "";
         letterSolved = [];
@@ -139,6 +146,7 @@ function solve() {
         cheated = false;
         startGame();
     }, 3000);
+
 }
 
 function chooseDictionary(option) {
