@@ -150,6 +150,7 @@ function solve() {
 }
 
 function chooseDictionary(option) {
+    localStorage.removeItem("wordIndex");
     if (option == 1) {
         document.getElementById("wordsVar").setAttribute('src', "data/dictionary.js");
         document.querySelector("[data-word='1']").classList.add("active");
