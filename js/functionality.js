@@ -156,12 +156,14 @@ function chooseDictionary(option) {
         document.querySelector("[data-word='1']").classList.add("active");
         document.querySelector("[data-word='2']").classList.remove("active");
         localStorage.setItem("dictionary", "1");
+        globalAlert("alert-success", "Set to \"Harder\" list.");
     }
     if (option == 2) {
         document.getElementById("wordsVar").setAttribute('src', "data/dictionary2.js");
         document.querySelector("[data-word='2']").classList.add("active");
         document.querySelector("[data-word='1']").classList.remove("active");
         localStorage.setItem("dictionary", "2");
+        globalAlert("alert-success", "Set to \"Easier\" list.");
     }
 
     if (option == 3) {
