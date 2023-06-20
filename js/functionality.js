@@ -37,6 +37,18 @@ function startGame() {
     wordDef = JSON.stringify(words[randomNum]).split(":");
     wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).trim().replaceAll(" ", "-").replaceAll("'", "");
     definitionPrep = wordDef[1].substring(1, wordDef[1].length - 2).replaceAll("'", "");
+    const wordLower = wordPrep.toLowerCase();
+    /*HIDING WORD FROM HINT*/
+    function capitalizeFirstLetter(str) {
+        return str[0].toUpperCase() + str.slice(1);
+    }
+    while (definitionPrep.indexOf(wordLower) !== -1) {
+        definitionPrep = definitionPrep.replace(wordLower, "~~~~~~");
+    }
+    while (definitionPrep.indexOf(capitalizeFirstLetter(wordLower)) !== -1) {
+        definitionPrep = definitionPrep.replace(capitalizeFirstLetter(wordLower), "~~~~~~");
+    }
+    /*END HIDING WORD FROM HINT*/
 
     for (let i = 0; i < wordPrep.length; i++) {/*remeber to check for spaces*/
         let addThis = " ~ ";
