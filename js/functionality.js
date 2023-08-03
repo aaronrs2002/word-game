@@ -123,6 +123,9 @@ function solve() {
     for (let i = 0; i < failedRequests.length; i++) {
         percentage = percentage - 10;
     }
+    if (percentage === 100) {
+        percentage = 200;
+    }
 
     document.querySelector("#winLoseStatus[role='alert']").classList.remove("hide");
     if (document.querySelector("input[name='solveWord']").value.toLowerCase().replaceAll(" ", "-") === wordPrep.toLowerCase().replaceAll(" ", "-")) {
