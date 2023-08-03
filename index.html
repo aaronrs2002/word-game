@@ -23,7 +23,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJWFFXF8G0"></script>
     <script>
         const urlStr = window.location.href;
-      if (urlStr.indexOf("file:///Users/") !== -1 || urlStr.indexOf("exclude") !== -1) {
+        if (urlStr.indexOf("file:///Users/") !== -1 || urlStr.indexOf("exclude") !== -1) {
             console.log("Not running GA");
         } else {
             window.dataLayer = window.dataLayer || [];
@@ -78,6 +78,41 @@
                 onClick="javascript:chooseDictionary(1)">Harder</button>
             <button type="button" class="btn btn-primary" data-word="3" onClick="javascript:chooseDictionary(3)">Build &
                 share trivia</button>
+        </div>
+        <div class="row">
+            <div class="col-md-12 py-2">
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-info" onClick="javascript:toggle('rules')" type="button"
+                        data-toggle="default">View Rules</button>
+                    <button class="btn btn-info hide" onClick="javascript:toggle('default')" type="button"
+                        data-toggle="rules">Hide Rules</button>
+                </div>
+
+                <div class="card hide" data-toggle="rules">
+                    <div class="card-body">
+                        <h5 class="card-title">Word game rules:</h5>
+                        <p>The "Easier" and "Harder" version of this game display definitions from dictionaries. Try to
+                            guest the word, or discover the word one letter at a time. For each letter chosen by you
+                            that
+                            is not included in the word there will be a 10% deduction from your score, which is shown in
+                            the top right during the game.
+                        </p>
+                        <p>Win 200 if you guess the word on the first try.</p>
+
+                        <h3>Build your own trivia</h3>
+
+                        <p>Select "Build your own words and hints" to view the trivia builder panel. Add a words and
+                            definitions with the form. As you add these your triva will appear in the game.</p>
+                        <p>Download and share your favorite triva that you created by using the "Download" and "upload
+                            file" options at the bottom.</p>
+
+
+                    </div>
+                </div>
+
+
+            </div>
         </div>
     </div>
 
