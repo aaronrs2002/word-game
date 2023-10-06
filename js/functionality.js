@@ -78,12 +78,16 @@ function showNum() {
     document.getElementById("solveWordBt").focus();
     document.querySelector("[name='userGuess']").classList.add("hide");
     document.getElementById("verifyBt").classList.add("hide");
-    document.getElementById("requestedList").innerHTML = "Click \"Solve\" to move on.";
+    document.getElementById("requestedList").innerHTML = "<h4>Click \"Solve\" to move on.</h4>";
 }
 
 function verify() {
     let statusList = "";
     const userGuess = document.querySelector("[name='userGuess']").value;
+    if (userGuess === "") {
+        globalAlert("alert-warning", "Type a letter into the field to see if it is in the word.");
+        return false;
+    }
     for (let i = 0; i < wordPrep.length; i++) {
         if (userGuess.toLowerCase() === wordPrep[i].toLowerCase()) {
             letterSolved[i] = userGuess.toLowerCase();
@@ -104,9 +108,9 @@ function verify() {
     document.querySelector("[name='userGuess']").value = "";
 
     if (requestFailedHTML.length === 0) {
-        document.querySelector("#requestedList").innerHTML = "So far, so good.";
+        document.querySelector("#requestedList").innerHTML = "<h4>So far, so good.<h4>";
     } else {
-        document.querySelector("#requestedList").innerHTML = "<span class='mobileBlock'>$" + (100 - (10 * failedRequests.length)) + " possible: </span>" + requestFailedHTML;
+        document.querySelector("#requestedList").innerHTML = "<h4><span class='mobileBlock'>$" + (100 - (10 * failedRequests.length)) + " possible </span><br/> Failed letter attempts: " + requestFailedHTML + "</h4>";
     }
 
 
@@ -129,9 +133,9 @@ function solve() {
     }
 
     document.querySelector("#winLoseStatus[role='alert']").classList.remove("hide");
-    document.getElementById("requestedList").innerHTML = ""
-    if (document.querySelector("input[name='solveWord']").value.toLowerCase().replaceAll(" ", "-") === wordPrep.toLowerCase().replaceAll(" ", "-")) {
 
+    if (document.querySelector("input[name='solveWord']").value.toLowerCase().replaceAll(" ", "-") === wordPrep.toLowerCase().replaceAll(" ", "-")) {
+        document.getElementById("requestedList").classList.add("hide");
         document.querySelector("#winLoseStatus[role='alert']").classList.add("alert-success");
         if (cheated === false) {
             document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>! YOU DID IT! +$" + percentage + "</h3>";
@@ -155,10 +159,11 @@ function solve() {
         letterSolved = [];
         document.querySelector("#listTarget").innerHTML = gameHTML;
         document.querySelector("#winLoseStatus[role='alert']").classList.add("hide");
+        document.getElementById("requestedList").classList.remove("hide");
         document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-success");
         document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-danger");
         failedRequests = [];
-        document.getElementById("requestedList").innerHTML = "Guessing a wrong letter will deduct from your possible end score.";
+        document.getElementById("requestedList").innerHTML = "<h4>Guessing a wrong letter will deduct from your possible end score.</h4>";
         requestFailedHTML = "";
         cheated = false;
         startGame();
