@@ -59,10 +59,10 @@ function startGame() {
         wordSolution = wordSolution + addThis;
     }
 
-    gameHTML = gameHTML + "<li class='list-group-item'><span class='hide' ><u><b>" + wordPrep
+    gameHTML = gameHTML + "<li class='list-group-item'><div class='d-grid gap-2'><button class='btn btn-primary' onClick='javascript:showNum()' >Cheat</button></div><span class='hide' ><u><b>" + wordPrep
         + "</b></u></span> " + definitionPrep + "<div id='hiddenWordTarget'><h3>" + wordSolution
         + "</h3></div><input type='text' name='userGuess' class='form-control' maxlength='1' placeholder='Is there a...' /><div class='d-grid gap-2'><button class='btn btn-block btn-primary py-2' id='verifyBt' onClick='javascript:verify()'>Request Letter</button>" +
-        "<input type='text' name='solveWord' class='form-control'  placeholder='Solve word' /><button  class='btn btn-block btn-success py-2' id='solveWordBt' onClick='javascript:solve()'>Solve</button><div class='d-grid gap-2'><button class='btn btn-primary' onClick='javascript:showNum()' >Cheat</button></div></div></li>";
+        "<input type='text' name='solveWord' class='form-control'  placeholder='Solve word' /><button  class='btn btn-block btn-success py-2' id='solveWordBt' onClick='javascript:solve()'>Solve</button></div></li>";
     document.querySelector("#listTarget").innerHTML = gameHTML;
 }
 
@@ -78,6 +78,7 @@ function showNum() {
     document.getElementById("solveWordBt").focus();
     document.querySelector("[name='userGuess']").classList.add("hide");
     document.getElementById("verifyBt").classList.add("hide");
+    document.getElementById("requestedList").innerHTML = "Click \"Solve\" to move on.";
 }
 
 function verify() {
@@ -128,6 +129,7 @@ function solve() {
     }
 
     document.querySelector("#winLoseStatus[role='alert']").classList.remove("hide");
+    document.getElementById("requestedList").innerHTML = ""
     if (document.querySelector("input[name='solveWord']").value.toLowerCase().replaceAll(" ", "-") === wordPrep.toLowerCase().replaceAll(" ", "-")) {
 
         document.querySelector("#winLoseStatus[role='alert']").classList.add("alert-success");
@@ -156,7 +158,7 @@ function solve() {
         document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-success");
         document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-danger");
         failedRequests = [];
-        document.getElementById("requestedList").innerHTML = "Guess the word";
+        document.getElementById("requestedList").innerHTML = "Guessing a wrong letter will deduct from your possible end score.";
         requestFailedHTML = "";
         cheated = false;
         startGame();
