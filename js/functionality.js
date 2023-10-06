@@ -59,10 +59,10 @@ function startGame() {
         wordSolution = wordSolution + addThis;
     }
 
-    gameHTML = gameHTML + "<li class='list-group-item'><div class='d-grid gap-2'><button class='btn btn-primary' onClick='javascript:showNum()' >Cheat</button></div><span class='hide' ><u><b>" + wordPrep
+    gameHTML = gameHTML + "<li class='list-group-item'><span class='hide' ><u><b>" + wordPrep
         + "</b></u></span> " + definitionPrep + "<div id='hiddenWordTarget'><h3>" + wordSolution
         + "</h3></div><input type='text' name='userGuess' class='form-control' maxlength='1' placeholder='Is there a...' /><div class='d-grid gap-2'><button class='btn btn-block btn-primary py-2' id='verifyBt' onClick='javascript:verify()'>Request Letter</button>" +
-        "<input type='text' name='solveWord' class='form-control'  placeholder='Solve word' /><button  class='btn btn-block btn-success py-2' id='solveWordBt' onClick='javascript:solve()'>Solve</button></div></li>";
+        "<input type='text' name='solveWord' class='form-control'  placeholder='Solve word' /><button  class='btn btn-block btn-success py-2' id='solveWordBt' onClick='javascript:solve()'>Solve</button><div class='d-grid gap-2'><button class='btn btn-primary' onClick='javascript:showNum()' >Cheat</button></div></div></li>";
     document.querySelector("#listTarget").innerHTML = gameHTML;
 }
 

@@ -48,7 +48,8 @@
                             <h3>Balance: $<span id="playerMoney"></span> </h3>
                         </div>
                         <div class="col-6">
-                            <h3 id="requestedList">Guess the word</h3>
+                            <h3>Guess the word</h3>
+                            <!--  <h3 id="requestedList">Guess the word</h3>-->
                         </div>
                     </div>
                 </div>
@@ -67,7 +68,13 @@
                     </div>
 
                 </div>
-                <div class="alert hide" id="winLoseStatus" role="alert"></div>
+                <div class="alert alert-info py-2" role="alert">
+                    <h5 id="requestedList">Guessing a wrong letter will deduct from your possible end score.</h5>
+
+                </div>
+                <div class="alert hide" id="winLoseStatus" role="alert">
+
+                </div>
 
             </div>
         </div>
