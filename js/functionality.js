@@ -62,7 +62,7 @@ function startGame() {
     gameHTML = gameHTML + "<li class='list-group-item'><div class='d-grid gap-2'><button class='btn btn-primary' onClick='javascript:showNum()' >Cheat</button></div><span class='hide' ><u><b>" + wordPrep
         + "</b></u></span> " + definitionPrep + "<div id='hiddenWordTarget'><h3>" + wordSolution
         + "</h3></div><div class='input-group mb-3'><input type='text' class='form-control'  name='userGuess' maxlength='1' placeholder='Is there a...'><button class='btn btn-primary'  id='verifyBt' onClick='javascript:verify()'>Request a letter <i class='fas fa-question-circle'></i></button></div>" +
-        "<div class='input-group mb-3'><input type='text' class='form-control'  name='solveWord'  placeholder='Solve word'><button class='btn btn-success'  id='solveWordBt' onClick='javascript:solve()'>Solve the word <i class='far fa-lightbulb'></i></button></div></div></li>";
+        "<div class='input-group mb-3'><input type='text' class='form-control'  name='solveWord'  placeholder='Solve word'><button class='btn btn-success'  id='solveWordBt' onClick='javascript:solve()'>Solve word <i class='far fa-lightbulb'></i></button></div></div></li>";
     document.querySelector("#listTarget").innerHTML = gameHTML;
 }
 
