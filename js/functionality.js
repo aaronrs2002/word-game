@@ -101,7 +101,7 @@ function verify() {
             failedRequests.push(userGuess.toLowerCase());
             requestFailedHTML = requestFailedHTML + "<span class='badge bg-warning text-light mx-1 text-capitalize'>" + userGuess.toLowerCase() + "</span> ";
         }
-        window.location = "#requestedList";
+        window.location = "#listTarget";
     }
 
     document.getElementById("hiddenWordTarget").innerHTML = statusList;
