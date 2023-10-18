@@ -103,7 +103,7 @@ function verify() {
             failedRequests.push(userGuess.toLowerCase());
             requestFailedHTML = requestFailedHTML + userGuess.toLowerCase() + " ";
         }
-        window.location = "#";
+        window.location = "#requestedList";
     }
 
     document.getElementById("hiddenWordTarget").innerHTML = statusList;
