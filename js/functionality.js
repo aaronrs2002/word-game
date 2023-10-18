@@ -67,8 +67,6 @@ function startGame() {
 }
 
 
-/* <div class='input-group mb-3'><input type='text' class='form-control'  name='solveWord'  placeholder='Solve word'><button class='btn btn-success'  id='solveWordBt' onClick='javascript:solve()'>Solve</button></div>*/
-
 startGame();
 
 function showNum() {
@@ -101,7 +99,7 @@ function verify() {
 
         if (failedRequests.indexOf(userGuess.toLowerCase()) === -1 && letterSolved.indexOf(userGuess.toLowerCase()) === -1) {
             failedRequests.push(userGuess.toLowerCase());
-            requestFailedHTML = requestFailedHTML + userGuess.toLowerCase() + " ";
+            requestFailedHTML = requestFailedHTML + "<span class='badge bg-warning text-light mx-1 text-capitalize'>" + userGuess.toLowerCase() + "</span> ";
         }
         window.location = "#requestedList";
     }
@@ -112,7 +110,7 @@ function verify() {
     if (requestFailedHTML.length === 0) {
         document.querySelector("#requestedList").innerHTML = "<h4>So far, so good.<h4>";
     } else {
-        document.querySelector("#requestedList").innerHTML = "<h4><span class='mobileBlock'>$" + (100 - (10 * failedRequests.length)) + " possible </span><br/> Failed letter attempts: " + requestFailedHTML + "</h4>";
+        document.querySelector("#requestedList").innerHTML = "<ul class='list-unstyled'><li><label><span class='mobileBlock'>$" + (100 - (10 * failedRequests.length)) + " possible </span></label></li><li> <label> Failed letter attempts: <span class='failedLetters'>" + requestFailedHTML + "</span></label></li></ul>";
     }
 
 
