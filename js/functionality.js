@@ -142,13 +142,15 @@ function solve() {
             document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>! YOU DID IT! +$" + percentage + "</h3>";
             setPlayerMoney((playerMoney + percentage));
         } else {
-            document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>. YOU CHEATED. NO WINNINGS.</h3>";
+            document.querySelector("#winLoseStatus[role='alert']").classList.add("alert-danger");
+            document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>. YOU CHEATED. YOU LOST $25.</h3>";
+            setPlayerMoney((playerMoney - 25));
         }
 
 
     } else {
         document.querySelector("#winLoseStatus[role='alert']").classList.add("alert-danger");
-        document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>! YOU FAILED! - $50</h3>";
+        document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>! YOU FAILED! YOU LOST $50</h3>";
 
         setPlayerMoney((playerMoney - 50));
     }
