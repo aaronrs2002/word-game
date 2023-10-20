@@ -121,7 +121,7 @@ function verify() {
         document.querySelector("[name='userGuess']").classList.add("hide");
         document.getElementById("verifyBt").classList.add("hide");
     }
-    document.querySelector("[name='userGuess']").focus();
+    document.querySelector("#verifyBt").focus();
 }
 
 function solve() {
