@@ -33,8 +33,12 @@ function startGame() {
         localStorage.setItem("wordIndex", randomNum);
     }
 
+    try {
+        wordDef = JSON.stringify(words[randomNum]).split(":");
+    } catch (error) {
+        console.log("no split at colon: " + error);
+    }
 
-    wordDef = JSON.stringify(words[randomNum]).split(":");
     wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).trim().replaceAll(" ", "-").replaceAll("'", "");
     definitionPrep = wordDef[1].substring(1, wordDef[1].length - 2).replaceAll("'", "");
     const wordLower = wordPrep.toLowerCase();
