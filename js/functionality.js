@@ -36,7 +36,7 @@ function startGame() {
     try {
         wordDef = JSON.stringify(words[randomNum]).split(":");
     } catch (error) {
-        console.log("no split at colon: " + error);
+        console.log("no split at colon: " + error + " - wordDef: " + wordDef);
     }
 
     wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).trim().replaceAll(" ", "-").replaceAll("'", "");
