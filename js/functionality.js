@@ -66,7 +66,7 @@ function startGame() {
     gameHTML = gameHTML + "<li class='list-group-item'><div class='d-grid gap-2'><button class='btn btn-primary' onClick='javascript:showNum()' >Cheat</button></div><span class='hide' ><u><b>" + wordPrep
         + "</b></u></span> " + definitionPrep + "<div id='hiddenWordTarget'><h3>" + wordSolution
         + "</h3></div><div class='input-group mb-3'><input type='text' class='form-control'  name='userGuess' maxlength='1' placeholder='Is there a...'><button class='btn btn-primary'  id='verifyBt' onClick='javascript:verify()'>Request a letter <i class='fas fa-question-circle'></i></button></div>" +
-        "<div class='input-group mb-3'><input type='text' class='form-control'  name='solveWord'  placeholder='Solve word'><button class='btn btn-success'  id='solveWordBt' onClick='javascript:solve()'>Solve word <i class='far fa-lightbulb'></i></button></div></div></li>";
+        "<div class='input-group mb-3'><input type='text' class='form-control'  name='solveWord'  placeholder='Solve word'><button class='btn btn-success'  id='solveWordBt' onClick='javascript:solve()'>Solve word <i class='far fa-lightbulb'></i></button></div></div></li><li><div class='d-grid gap-2'><button class='btn btn-success hide' id='nextWord' onClick='nextWord()'>Next Word</button></div></li>";
     document.querySelector("#listTarget").innerHTML = gameHTML;
 }
 
@@ -128,6 +128,25 @@ function verify() {
     document.querySelector("#verifyBt").focus();
 }
 
+function nextWord() {
+
+    localStorage.removeItem("wordIndex");
+    gameHTML = "";
+    wordSolution = "";
+    letterSolved = [];
+    document.querySelector("#listTarget").innerHTML = gameHTML;
+    document.querySelector("#winLoseStatus[role='alert']").classList.add("hide");
+    document.getElementById("requestedList").classList.remove("hide");
+    document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-success");
+    document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-danger");
+    failedRequests = [];
+    document.getElementById("requestedList").innerHTML = "<h4>Guessing a wrong letter will deduct from your possible end score.</h4>";
+    requestFailedHTML = "";
+    cheated = false;
+    startGame();
+
+}
+
 function solve() {
     let percentage = 100;
     for (let i = 0; i < failedRequests.length; i++) {
@@ -136,7 +155,7 @@ function solve() {
     if (percentage === 100) {
         percentage = 200;
     }
-
+    document.getElementById("nextWord").classList.remove("hide");
     document.querySelector("#winLoseStatus[role='alert']").classList.remove("hide");
 
     if (document.querySelector("input[name='solveWord']").value.toLowerCase().replaceAll(" ", "-") === wordPrep.toLowerCase().replaceAll(" ", "-")) {
@@ -144,6 +163,7 @@ function solve() {
         document.querySelector("#winLoseStatus[role='alert']").classList.add("alert-success");
         if (cheated === false) {
             document.querySelector("#winLoseStatus[role='alert']").innerHTML = "<h3><span class='capitalize'>" + wordPrep + "</span>! YOU DID IT! +$" + percentage + "</h3>";
+
             setPlayerMoney((playerMoney + percentage));
         } else {
             document.querySelector("#winLoseStatus[role='alert']").classList.add("alert-danger");
@@ -159,22 +179,9 @@ function solve() {
         setPlayerMoney((playerMoney - 50));
     }
 
-    setTimeout(() => {
-        localStorage.removeItem("wordIndex");
-        gameHTML = "";
-        wordSolution = "";
-        letterSolved = [];
-        document.querySelector("#listTarget").innerHTML = gameHTML;
-        document.querySelector("#winLoseStatus[role='alert']").classList.add("hide");
-        document.getElementById("requestedList").classList.remove("hide");
-        document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-success");
-        document.querySelector("#winLoseStatus[role='alert']").classList.remove("alert-danger");
-        failedRequests = [];
-        document.getElementById("requestedList").innerHTML = "<h4>Guessing a wrong letter will deduct from your possible end score.</h4>";
-        requestFailedHTML = "";
-        cheated = false;
-        startGame();
-    }, 3000);
+
+
+
 
 }
 
