@@ -63,7 +63,7 @@ function startGame() {
             wordSolution = wordSolution + addThis;
         }
     } catch (error) {
-        console.log("Data does not look right: " + error);
+        console.log("Data does not look right:  " + error);
     }
 
     gameHTML = gameHTML + "<li class='list-group-item'><div class='d-grid gap-2'><button class='btn btn-primary' onClick='javascript:showNum()' >Cheat</button></div><span class='hide' ><u><b>" + wordPrep
