@@ -38,29 +38,32 @@ function startGame() {
     } catch (error) {
         console.log("no split at colon: " + error + " - wordDef: " + wordDef);
     }
-
-    wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).trim().replaceAll(" ", "-").replaceAll("'", "");
-    definitionPrep = wordDef[1].substring(1, wordDef[1].length - 2).replaceAll("'", "");
-    const wordLower = wordPrep.toLowerCase();
-    /*HIDING WORD FROM HINT*/
-    function capitalizeFirstLetter(str) {
-        return str[0].toUpperCase() + str.slice(1);
-    }
-    while (definitionPrep.indexOf(wordLower) !== -1) {
-        definitionPrep = definitionPrep.replace(wordLower, "~~~~~~");
-    }
-    while (definitionPrep.indexOf(capitalizeFirstLetter(wordLower)) !== -1) {
-        definitionPrep = definitionPrep.replace(capitalizeFirstLetter(wordLower), "~~~~~~");
-    }
-    /*END HIDING WORD FROM HINT*/
-
-    for (let i = 0; i < wordPrep.length; i++) {/*remeber to check for spaces*/
-        let addThis = " ~ ";
-        if (wordPrep[i] === "-") {
-            addThis = " - ";
+    try {
+        wordPrep = wordDef[0].substring(2, wordDef[0].length - 1).trim().replaceAll(" ", "-").replaceAll("'", "");
+        definitionPrep = wordDef[1].substring(1, wordDef[1].length - 2).replaceAll("'", "");
+        const wordLower = wordPrep.toLowerCase();
+        /*HIDING WORD FROM HINT*/
+        function capitalizeFirstLetter(str) {
+            return str[0].toUpperCase() + str.slice(1);
         }
-        letterSolved.push(addThis);
-        wordSolution = wordSolution + addThis;
+        while (definitionPrep.indexOf(wordLower) !== -1) {
+            definitionPrep = definitionPrep.replace(wordLower, "~~~~~~");
+        }
+        while (definitionPrep.indexOf(capitalizeFirstLetter(wordLower)) !== -1) {
+            definitionPrep = definitionPrep.replace(capitalizeFirstLetter(wordLower), "~~~~~~");
+        }
+        /*END HIDING WORD FROM HINT*/
+
+        for (let i = 0; i < wordPrep.length; i++) {/*remeber to check for spaces*/
+            let addThis = " ~ ";
+            if (wordPrep[i] === "-") {
+                addThis = " - ";
+            }
+            letterSolved.push(addThis);
+            wordSolution = wordSolution + addThis;
+        }
+    } catch (error) {
+        console.log("Data does not look right: " + error);
     }
 
     gameHTML = gameHTML + "<li class='list-group-item'><div class='d-grid gap-2'><button class='btn btn-primary' onClick='javascript:showNum()' >Cheat</button></div><span class='hide' ><u><b>" + wordPrep
