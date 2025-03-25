@@ -132,7 +132,7 @@ function verify() {
 }
 
 function nextWord() {
-
+    document.getElementById("solveWordBt").disabled = false;
     localStorage.removeItem("wordIndex");
     gameHTML = "";
     wordSolution = "";
@@ -159,6 +159,7 @@ function solve() {
         percentage = 200;
     }
     document.getElementById("nextWord").classList.remove("hide");
+    document.getElementById("solveWordBt").disabled = true;
     document.querySelector("#winLoseStatus[role='alert']").classList.remove("hide");
 
     if (document.querySelector("input[name='solveWord']").value.toLowerCase().replaceAll(" ", "-") === wordPrep.toLowerCase().replaceAll(" ", "-")) {
