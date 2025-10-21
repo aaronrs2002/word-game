@@ -71,6 +71,7 @@ function startGame() {
         + "</h3></div><div class='input-group mb-3'><input type='text' class='form-control'  name='userGuess' maxlength='1' placeholder='Is there a...'><button class='btn btn-primary'  id='verifyBt' onClick='javascript:verify()'>Request a letter <i class='fas fa-question-circle'></i></button></div>" +
         "<div class='input-group mb-3'><input type='text' class='form-control'  name='solveWord'  placeholder='Solve word'><button class='btn btn-success'  id='solveWordBt' onClick='javascript:solve()'>Solve word <i class='far fa-lightbulb'></i></button></div></div></li><li><div class='d-grid gap-2'><button class='btn btn-success hide' id='nextWord' onClick='nextWord()'>Next Word</button></div></li>";
     document.querySelector("#listTarget").innerHTML = gameHTML;
+    document.querySelector("[name='userGuess']").focus();
 }
 
 
@@ -128,7 +129,8 @@ function verify() {
         document.querySelector("[name='userGuess']").classList.add("hide");
         document.getElementById("verifyBt").classList.add("hide");
     }
-    document.querySelector("#verifyBt").focus();
+    document.querySelector("[name='userGuess']").focus();
+
 }
 
 function nextWord() {
