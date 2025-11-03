@@ -217,7 +217,7 @@ function chooseDictionary(option) {
         if (localStorage.getItem("balance")) {
             balance = localStorage.getItem("balance");
         }
-        window.location.href = "https://aaronrs2002.github.io/build-your-own-word-trivia/?" + gaParam + "&theme=" + setTheme + "&balance=" + balance + "&";
+        window.location.href = "https://aaronrs2002.github.io/build-your-own-word-trivia/?" + gaParam + "&theme=" + setTheme + "&";
     }
 }
 
