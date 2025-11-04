@@ -18,6 +18,7 @@ let failedRequests = [];
 let requestFailedHTML = "";
 
 function setPlayerMoney(passPlayerMoney) {
+    ckHighScore();
     playerMoney = passPlayerMoney;
     document.getElementById("playerMoney").innerHTML = passPlayerMoney;
     document.querySelector("#playerMoney").innerHTML = passPlayerMoney;/*SAFARI BUG NEEDS BOTH */
